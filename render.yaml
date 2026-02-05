@@ -5,7 +5,7 @@ services:
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
-    root: backend
+    rootDir: backend
     envVars:
       - key: GEMINI_API_KEY
         sync: false # You must enter this manually in Render Dashboard
@@ -14,7 +14,7 @@ services:
   - type: web
     name: tanampintar-frontend
     env: static
-    root: frontend
+    rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     envVars:
