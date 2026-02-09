@@ -2,21 +2,21 @@ services:
   # 1. Backend Service (Python/FastAPI)
   - type: web
     name: tanampintar-backend
-    env: python
+    runtime: python
+    rootDir: backend
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
-    rootDir: backend
     envVars:
       - key: GEMINI_API_KEY
-        sync: false # You must enter this manually in Render Dashboard
+        sync: false
 
   # 2. Frontend Service (React/Vite)
   - type: web
     name: tanampintar-frontend
-    env: static
+    runtime: static
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     envVars:
       - key: VITE_API_URL
-        sync: false # Update this in Render Dashboard after Backend is deployed
+        sync: false
