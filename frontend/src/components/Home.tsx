@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 const Home = () => {
   const navigate = useNavigate();
-  const [farmerName, setFarmerName] = useState('Farmer');
+  const [farmerName] = useState('Farmer');
 
   useEffect(() => {
     // In a real app, we'd have a name. For now, just generic.
