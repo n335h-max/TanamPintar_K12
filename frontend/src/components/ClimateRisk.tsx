@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowLeft, CloudRain, Sun, Thermometer, AlertOctagon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import api from '../services/api';
+import api from '../api';
 
 interface ClimateData {
   rainfall: string;
