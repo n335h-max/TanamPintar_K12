@@ -19,7 +19,4 @@ services:
     staticPublishPath: dist
     envVars:
       - key: VITE_API_URL
-        fromService:
-          type: web
-          name: tanampintar-backend
-          property: url
+        sync: false # Update this in Render Dashboard after Backend is deployed
