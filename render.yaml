@@ -3,12 +3,12 @@ services:
   - type: web
     name: tanampintar-backend
     runtime: python
-    rootDir: backend
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    rootDir: backend
     envVars:
       - key: GEMINI_API_KEY
-        sync: false
+        sync: false # Prompts for value in Render Dashboard
 
   # 2. Frontend Service (React/Vite)
   - type: web
@@ -19,4 +19,4 @@ services:
     staticPublishPath: dist
     envVars:
       - key: VITE_API_URL
-        sync: false
+        sync: false # Prompts for value in Render Dashboard
