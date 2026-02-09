@@ -8,6 +8,9 @@ load_dotenv()
 
 # Configure Gemini
 api_key = os.getenv("GEMINI_API_KEY")
+if api_key:
+    # Clean the key: remove whitespace and accidental quotes
+    api_key = api_key.strip().replace('"', '').replace("'", "")
 
 def analyze_land_image(image_bytes: bytes) -> dict:
     """
@@ -24,6 +27,9 @@ def analyze_land_image(image_bytes: bytes) -> dict:
         }
 
     try:
+        # Debug: Log the key being used (masked)
+        print(f"Using Gemini API Key: {api_key[:5]}...{api_key[-5:] if len(api_key) > 10 else ''}")
+
         # 1. Prepare the API endpoint (v1 stable)
         # Using gemini-2.5-flash as it is the latest stable version available in v1
         url = f"https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key={api_key}"
